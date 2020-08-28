@@ -19,16 +19,15 @@ if (!$tweet) {
 }
 
 if ($tweet['good']) {
-    $sql_true = 'UPDATE tweets SET good = FALSE WHERE id = :id';
-    $stmt_true = $dbh->prepare($sql_true);
-    $stmt_true->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt_true->execute();
+    $sql = 'UPDATE tweets SET good = FALSE WHERE id = :id';
+    
 } else {
-    $sql_false = 'UPDATE tweets SET good = TRUE WHERE id = :id';
-    $stmt_false = $dbh->prepare($sql_false);
-    $stmt_false->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt_false->execute();
+    $sql = 'UPDATE tweets SET good = TRUE WHERE id = :id';
 }
+
+$stmt = $dbh->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
 
 header('Location: index.php');
 exit;

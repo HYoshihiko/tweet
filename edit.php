@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!$errors) {
         $dbh = connectDb();
-        $sql = 'UPDATE tweets SET content = :content WHERE id = :id';
+        $sql = 'UPDATE tweets SET content = :content, created_at = CURRENT_TIMESTAMP WHERE id = :id';
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':content', $content, PDO::PARAM_STR);
