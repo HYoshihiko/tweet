@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+.tweet-list li {
+    list-style: none;
+}
+
+.error-list {
+    color: red;
+    list-style: none;
+}
+
+.star {
+    text-decoration: none;
+    color: red;
+}
+
+.back {
+    margin-bottom: 20px;
+}
